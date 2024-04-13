@@ -1,0 +1,4 @@
+rootProject.name = 'waiting_reservation'
+include 'db'
+include 'api'
+
