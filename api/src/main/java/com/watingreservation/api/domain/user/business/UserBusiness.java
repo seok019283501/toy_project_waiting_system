@@ -3,6 +3,7 @@ package com.watingreservation.api.domain.user.business;
 import com.watingreservation.api.common.annotation.Business;
 import com.watingreservation.api.domain.token.business.TokenBusiness;
 import com.watingreservation.api.domain.token.controller.model.TokenResponse;
+import com.watingreservation.api.domain.user.controller.model.UserLoginRequest;
 import com.watingreservation.api.domain.user.controller.model.UserRegisterRequest;
 import com.watingreservation.api.domain.user.controller.model.UserResponse;
 import com.watingreservation.api.domain.user.converter.UserConverter;
@@ -27,8 +28,8 @@ public class UserBusiness {
     }
 
     //로그인
-    public TokenResponse login(String userId, String password,UserStatus userStatus,UserAccess userAccess){
-        var user = userService.getUserWithThrow(userId,password,userStatus,userAccess);
+    public TokenResponse login(UserLoginRequest userLoginRequest, UserStatus userStatus, UserAccess userAccess){
+        var user = userService.getUserWithThrow(userLoginRequest.getId(),userLoginRequest.getPassword(),userStatus,userAccess);
         var token = tokenBusiness.issueToken(user);
         return token;
     }
