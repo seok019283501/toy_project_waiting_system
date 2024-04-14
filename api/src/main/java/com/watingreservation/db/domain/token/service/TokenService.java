@@ -1,7 +1,6 @@
 package com.watingreservation.db.domain.token.service;
 
 import com.watingreservation.db.common.error.ErrorCode;
-import com.watingreservation.db.common.error.TokenErrorCode;
 import com.watingreservation.db.common.exception.ApiException;
 import com.watingreservation.db.domain.token.helper.TokenHelperIfs;
 import com.watingreservation.db.domain.token.model.TokenDto;
@@ -16,21 +15,21 @@ import java.util.Objects;
 public class TokenService {
     private final TokenHelperIfs tokenHelperIfs;
 
-    public TokenDto issueAccessToken(Long userId){
+    public TokenDto issueAccessToken(String userId){
         var data = new HashMap<String,Object>();
         data.put("userId",userId);
         return tokenHelperIfs.issueAccessToken(data);
     }
-    public TokenDto issueRefreshToken(Long userId){
+    public TokenDto issueRefreshToken(String userId){
         var data = new HashMap<String,Object>();
         data.put("userId",userId);
         return tokenHelperIfs.issueRefreshToken(data);
     }
-    public Long validationToken(String token){
+    public String validationToken(String token){
         var map = tokenHelperIfs.validationTokenWithThrow(token);
         var userId = map.get("userId");
         Objects.requireNonNull(userId,()->{throw new ApiException(ErrorCode.NULL_POINT);
         });
-        return Long.parseLong(userId.toString());
+        return userId.toString();
     }
 }

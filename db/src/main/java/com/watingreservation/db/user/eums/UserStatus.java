@@ -1,0 +1,12 @@
+package com.watingreservation.db.user.eums;
+
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
+public enum UserStatus {
+    REGISTERED("등록"),
+    UNREGISTERED("해제")
+    ;
+
+    private final String description;
+}
