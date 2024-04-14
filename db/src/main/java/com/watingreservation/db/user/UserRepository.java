@@ -9,5 +9,5 @@ import java.util.Optional;
 public interface UserRepository extends JpaRepository<UserEntity,String> {
     Optional<UserEntity> findFirstByAccessOrderByIdDesc(UserAccess access);
     Optional<UserEntity> findFirstByIdOrderByIdDesc(String id);
-    Optional<UserEntity> findFirstByIdAndPasswordAndStatusAndAccessOrderByIdDesc(String userId, String password,UserStatus userStatus,UserAccess userAccess);
+    Optional<UserEntity> findFirstByIdAndPasswordAndStatusAndAccessOrderByIdDesc(String userId, String password, UserStatus userStatus, UserAccess userAccess);
 }
