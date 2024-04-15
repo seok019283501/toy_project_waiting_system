@@ -6,7 +6,7 @@ import lombok.AllArgsConstructor;
 public enum UserAccess {
     USER("USER"),
     OWNER("OWNER"),
-    MANGER("MANAGER")
+    MANAGER("MANAGER")
     ;
 
     private final String description;
